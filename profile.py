@@ -33,7 +33,6 @@ link = request.LAN("lan")
 num_nodes = params.n
 def setupNode(nodeName,nodeType,ramSize,coreCount):
    if nodeType == "RawPC":
-      node.routable_control_ip = "true"
       return request.RawPC(nodeName)
    else:
       node = request.XenVM(nodeName)
@@ -43,6 +42,7 @@ def setupNode(nodeName,nodeType,ramSize,coreCount):
 
 for i in range(num_nodes):
   if i == 0:
+     node.routable_control_ip = "true"
     node = setupNode("head", params.nodeType, params.ramsize, params.corecount)
   else:
     node = setupNode("worker-" + str(i), params.nodeType, params.ramsize, params.corecount)
