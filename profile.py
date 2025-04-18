@@ -33,6 +33,7 @@ link = request.LAN("lan")
 num_nodes = params.n
 def setupNode(nodeName,nodeType,ramSize,coreCount):
    if nodeType == "RawPC":
+      node.routable_control_ip = "true"
       return request.RawPC(nodeName)
    else:
       node = request.XenVM(nodeName)
@@ -46,8 +47,7 @@ for i in range(num_nodes):
   else:
     node = setupNode("worker-" + str(i), params.nodeType, params.ramsize, params.corecount)
   bs_landing = node.Blockstore("bs_" + str(i), "/image")
-  bs_landing.size = "500GB"
-  node.routable_control_ip = "true" 
+  bs_landing.size = "500GB" 
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU22-64-STD"
   iface = node.addInterface("if" + str(i))
   iface.component_id = "eth1"
