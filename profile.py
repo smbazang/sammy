@@ -8,7 +8,7 @@ pc.defineParameter("nodeType", "Node type: XenVM or RawPC",
                    portal.ParameterType.STRING, "XenVM" )
 pc.defineParameter( "n", 
                    "Number of nodes", 
-                   portal.ParameterType.INTEGER, 1 )
+                   portal.ParameterType.INTEGER, 2 )
 pc.defineParameter( "corecount", 
                    "Number of cores in each node.  NB: Make certain your requested cluster can supply this quantity.", 
                    portal.ParameterType.INTEGER, 4)
