@@ -42,8 +42,8 @@ def setupNode(nodeName,nodeType,ramSize,coreCount):
 
 for i in range(num_nodes):
   if i == 0:
-    node.routable_control_ip = "true"
     node = setupNode("head", params.nodeType, params.ramsize, params.corecount)
+     node.routable_control_ip = "true"
   else:
     node = setupNode("worker-" + str(i), params.nodeType, params.ramsize, params.corecount)
   bs_landing = node.Blockstore("bs_" + str(i), "/image")
